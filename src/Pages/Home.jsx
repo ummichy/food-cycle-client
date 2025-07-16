@@ -1,10 +1,12 @@
 import React from 'react';
+import Slider from '../Components/Slider';
 
 const Home = () => {
+    //  const services = fetch('http://localhost:3000/services').then(res=>res.json())
     return (
-        <div>
-            <h1>this is home</h1>
-        </div>
+        <>
+       <Slider></Slider>
+        </>
     );
 };
 

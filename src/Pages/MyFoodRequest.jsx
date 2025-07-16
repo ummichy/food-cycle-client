@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Services = () => {
+const MyFoodRequest = () => {
     return (
         <div>
-            
+            <h1>reqs</h1>
         </div>
     );
 };
 
-export default Services;
+export default MyFoodRequest;

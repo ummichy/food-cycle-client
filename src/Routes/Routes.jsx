@@ -3,14 +3,15 @@ import {
   createBrowserRouter
 } from "react-router";
 import Home from '../Pages/Home';
-import Services from '../Pages/Services';
 import Login from '../Pages/Login';
 import Register from '../Pages/Register';
 import MainLayout from '../Layouts/MainLayout';
 import PrivateRoute from './PrivateRoute';
-import AddService from '../Pages/AddService';
-import MyServices from '../Pages/MyServices';
-import MyReviews from '../Pages/MyReviews';
+import Details from '../Pages/Details';
+import AvailableFoods from '../Pages/AvailableFoods';
+import AddFood from '../Pages/AddFood';
+import ManageMyFoods from '../Pages/ManageMyFoods';
+import MyFoodRequest from '../Pages/MyFoodRequest';
 
 const router = createBrowserRouter([
   
@@ -23,9 +24,16 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "services",
-        element: <Services />,
+        path: "available-foods",
+        element: <AvailableFoods />,
       },
+       {
+  path: "foods/:id",
+  loader : ({ params }) => fetch(`http://localhost:3000/services${params.id}`),
+  element: (
+    <Details></Details>
+  ),
+},
  
       {
         path: "login",
@@ -37,21 +45,22 @@ const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "add-service",
+        path: "add-food",
+         loader : () => fetch('http://localhost:3000/services'),
         element: <PrivateRoute>
-   <AddService></AddService>
+   <AddFood></AddFood>
         </PrivateRoute>,
       },
       {
-        path: "my-services",
+        path: "my-foods",
         element: <PrivateRoute>
-   <MyServices></MyServices>
+   <ManageMyFoods></ManageMyFoods>
         </PrivateRoute>,
       },
       {
-        path: "my-reviews",
+        path: "food-request",
         element: <PrivateRoute>
-  <MyReviews></MyReviews>
+  <MyFoodRequest></MyFoodRequest>
         </PrivateRoute>,
       },
       

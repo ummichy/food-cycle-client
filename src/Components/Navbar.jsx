@@ -45,33 +45,33 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/services" className={({ isActive }) =>
+            <NavLink to="/available-foods" className={({ isActive }) =>
               isActive ? "text-gray-600 text-sm border-b-2 border-gray-600" : "text-sm"
             }>
-              Services
+              Available Foods
             </NavLink>
           </li>
           {user && (
             <>
               <li>
-                <NavLink to="/add-service" className={({ isActive }) =>
+                <NavLink to="/add-food" className={({ isActive }) =>
                   isActive ? "text-gray-600 text-sm border-b-2 border-gray-600" : "text-sm"
                 }>
-                  Add Service
+                  Add Food
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/my-services" className={({ isActive }) =>
+                <NavLink to="/my-foods" className={({ isActive }) =>
                   isActive ? "text-gray-600 text-sm border-b-2 border-gray-600" : "text-sm"
                 }>
-                  My Services
+                  Manage My Foods
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/my-reviews" className={({ isActive }) =>
+                <NavLink to="/food-request" className={({ isActive }) =>
                   isActive ? "text-gray-600 text-sm border-b-2 border-gray-600" : "text-sm"
                 }>
-                  My Reviews
+                 My Food Request
                 </NavLink>
               </li>
             </>
