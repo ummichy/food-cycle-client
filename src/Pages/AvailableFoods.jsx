@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router';
+import React, { useEffect, useState, useContext } from 'react';
+import { useNavigate } from 'react-router';
 import axios from 'axios';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const AvailableFoods = () => {
   const [foods, setFoods] = useState([]);
@@ -8,6 +9,10 @@ const AvailableFoods = () => {
   const [sortOrder, setSortOrder] = useState('asc');
   const [searchTerm, setSearchTerm] = useState('');
 
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  // Fetch all available foods
   useEffect(() => {
     axios.get('http://localhost:3000/services')
       .then(res => {
@@ -17,6 +22,7 @@ const AvailableFoods = () => {
       });
   }, []);
 
+  // Search & Sort functionality
   useEffect(() => {
     let updated = [...foods];
 
@@ -34,6 +40,15 @@ const AvailableFoods = () => {
 
     setFilteredFoods(updated);
   }, [searchTerm, sortOrder, foods]);
+
+  // Handle View Details
+  const handleViewDetails = (id) => {
+    if (!user) {
+      navigate('/login');
+    } else {
+      navigate(`/food/${id}`);
+    }
+  };
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-12">
@@ -79,11 +94,12 @@ const AvailableFoods = () => {
                 <p className="text-gray-600 text-sm">Pickup: {food.pickupLocation}</p>
                 <p className="text-gray-600 text-sm mb-3">Expires: {new Date(food.expireDate).toLocaleString()}</p>
 
-                <Link to={`/food/${food._id}`}>
-                  <button className="w-full py-2 rounded-xl bg-gray-900 text-white font-semibold hover:brightness-110 transition">
-                    View Details
-                  </button>
-                </Link>
+                <button
+                  onClick={() => handleViewDetails(food._id)}
+                  className="w-full py-2 rounded-xl bg-gray-900 text-white font-semibold hover:brightness-110 transition"
+                >
+                  View Details
+                </button>
               </div>
             </div>
           ))}

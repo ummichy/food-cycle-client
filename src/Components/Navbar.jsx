@@ -30,7 +30,7 @@ const Navbar = () => {
       <div className="navbar-start">
         <div className='flex items-center gap-2'>
           <h1 className='text-3xl'><GrServices /></h1>
-          <NavLink to="/" className="btn btn-ghost text-xl">ServiceTrack</NavLink>
+          <NavLink to="/" className="btn btn-ghost text-xl">The FoodCycle</NavLink>
         </div>
       </div>
 
@@ -97,14 +97,14 @@ const Navbar = () => {
               <NavLink to="/" className="text-sm hover:bg-gray-100 rounded px-2 py-1">Home</NavLink>
             </li>
             <li>
-              <NavLink to="/services" className="text-sm hover:bg-gray-100 rounded px-2 py-1">Services</NavLink>
+              <NavLink to="/available-foods" className="text-sm hover:bg-gray-100 rounded px-2 py-1">Available Foods</NavLink>
             </li>
 
             {user ? (
               <>
-                <li><NavLink to="/add-service" className="text-sm hover:bg-gray-100 rounded px-2 py-1">Add Service</NavLink></li>
-                <li><NavLink to="/my-services" className="text-sm hover:bg-gray-100 rounded px-2 py-1">My Services</NavLink></li>
-                <li><NavLink to="/my-reviews" className="text-sm hover:bg-gray-100 rounded px-2 py-1">My Reviews</NavLink></li>
+                <li><NavLink to="/add-food" className="text-sm hover:bg-gray-100 rounded px-2 py-1">Add Food</NavLink></li>
+                <li><NavLink to="/my-foods" className="text-sm hover:bg-gray-100 rounded px-2 py-1"> Manage My Foods</NavLink></li>
+                <li><NavLink to="/food-request" className="text-sm hover:bg-gray-100 rounded px-2 py-1">My Food Request</NavLink></li>
                 <div className="divider my-1"></div>
                 <li><button onClick={handleLogout} className="text-sm text-red-500 hover:bg-red-100 rounded px-2 py-1">Logout</button></li>
               </>
