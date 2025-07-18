@@ -16,8 +16,8 @@ const FeaturedFoods = () => {
   }, []);
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-12 text-[#3B1F2B]">
-      <h2 className="text-3xl font-bold mb-8 text-center">Featured Foods</h2>
+    <section className="max-w-7xl mx-auto px-4 py-16 text-black">
+      <h2 className="text-5xl font-extrabold mb-8 text-center">Food Highlights</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {featuredFoods.map(food => (
@@ -27,13 +27,13 @@ const FeaturedFoods = () => {
               alt={food.foodName}
               className="h-48 w-full object-cover rounded-t-xl"
             />
-            <div className="p-5 text-[#3B1F2B]">
+            <div className="p-5 text-black">
               <h3 className="text-xl font-semibold">{food.foodName}</h3>
               <p className="mt-1">Quantity: <span className="font-medium">{food.foodQuantity}</span></p>
               <p className="text-sm mt-1">Pickup: {food.pickupLocation}</p>
               <p className="text-sm mt-1 mb-3">Expires: {new Date(food.expireDate).toLocaleDateString()}</p>
               <Link to={`/food/${food._id}`}>
-                <button className="w-full py-2 rounded-lg bg-[#D8A7A7] hover:bg-[#C18C8C] text-[#3B1F2B] font-semibold transition duration-300">
+                <button className="w-full py-2 rounded-lg bg-white border border-black text-black hover:bg-black hover:text-white font-semibold transition duration-300">
                   View Details
                 </button>
               </Link>
@@ -44,7 +44,7 @@ const FeaturedFoods = () => {
 
       <div className="text-center mt-12">
         <Link to="/available-foods">
-          <button className="px-8 py-3 rounded-full bg-[#D8A7A7] hover:bg-[#C18C8C] text-[#3B1F2B] font-semibold transition duration-300">
+          <button className="px-8 py-3 rounded-full bg-white border border-black text-black hover:bg-black hover:text-white font-semibold transition duration-300">
             Show All
           </button>
         </Link>
