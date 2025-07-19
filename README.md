@@ -1,12 +1,28 @@
-# React + Vite
+Project name - TheFoodCycle
+Live link -
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+Purpose-
+Ensure Food Reaches the Right Hands:
+Make food available to those who need it most, such as low-income families, students, or anyone facing food insecurity.
+Support a Sustainable Future:
+Contribute to the fight against food waste and environmental pollution by promoting re-use and proper food distribution.
+Empower Donors and Volunteers:
+Give users a platform where they can feel empowered by donating, volunteering, or simply spreading awareness.
+Encourage Local Action:
+Create a space where local people can take part in real change, starting from their own neighborhoods.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Key features-
+Food Donation System
+Users can easily donate surplus food by providing details like name, image, quantity, location, and expiry date.
+Browse Available Foods
+Visitors can explore a list of available food items shared by others, filtered by availability and expiry date.
+Detailed Food View
+Each food item has a dedicated detail page showing all necessary information, including pickup location and expiry date.
+Responsive Design
+Fully responsive for mobile, tablet, and desktop users — ensuring accessibility from any device.
 
-## Expanding the ESLint configuration
+Npm packages used-
+JWT,Firebase,Tailwind,Transtack query, Axios,React router,Motion and more
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
