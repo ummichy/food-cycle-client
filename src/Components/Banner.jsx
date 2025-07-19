@@ -39,7 +39,7 @@ const Banner = () => {
         <div className="flex justify-center gap-4 sm:gap-6 flex-wrap">
           <Link to="/available-foods" className="w-full sm:w-auto">
             <motion.button initial={{ scale: 0 }} animate={{ scale: 1 }} className="w-full sm:w-auto px-8 sm:px-12 py-3 sm:py-4 bg-white hover:bg-gray-100 text-black font-semibold rounded-full shadow-lg transition">
-              Explore Available Foods
+              Explore Available Food
             </motion.button>
           </Link>
           <Link to="/add-food" className="w-full sm:w-auto">
