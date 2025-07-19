@@ -93,7 +93,7 @@ const Navbar = () => {
                       : "text-white hover:border-b-2 hover:border-white px-3 pb-1"
                   }
                 >
-                  Manage My Foods
+                  Manage my foods
                 </NavLink>
               </li>
               <li>

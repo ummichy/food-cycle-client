@@ -32,7 +32,7 @@ const Banner = () => {
 
         <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-light max-w-3xl mx-auto mb-10 sm:mb-12 drop-shadow-md animate-fadeInUp delay-150">
           Help reduce food waste and bring joy to someone’s plate. <br />
-          Your contribution matters — every meal counts.
+          Your contribution matters — every meal counts
         </p>
 
         {/* Buttons */}
