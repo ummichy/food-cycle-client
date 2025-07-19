@@ -36,7 +36,7 @@ const Supporters = () => {
   };
 
   return (
-    <section className="bg-gradient-to-b from-white to-[#f0f0f0] py-24 px-4 text-center">
+    <section className="bg-gradient-to-b from-[#ddd9d6] to-[#f4f2f0]  py-24 px-4 text-center">
       <h2 className="text-5xl sm:text-6xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#3B1F2B] via-[#5C3A4D] to-[#9E8C95] mb-4">
         Supported By Our Partners
       </h2>

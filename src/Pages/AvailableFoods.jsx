@@ -51,11 +51,11 @@ const AvailableFoods = () => {
   };
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold text-center text-gray-900 mb-10 tracking-tight">Available Foods</h1>
+    <section className="max-w-7xl mx-auto px-4 py-24">
+     
 
       {/* Search & Sort */}
-      <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-10 bg-white/80 backdrop-blur-sm p-6 rounded-xl shadow-md border">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-10 bg-[#e1dad5] backdrop-blur-sm p-6 rounded-xl shadow-2xl ">
         <input
           type="text"
           placeholder="Search by food name..."
@@ -81,7 +81,7 @@ const AvailableFoods = () => {
           {filteredFoods.map(food => (
             <div
               key={food._id}
-              className="bg-white/60 backdrop-blur-xl rounded-3xl shadow-xl border border-gray-200 hover:shadow-2xl transition-all duration-300"
+              className="bg-[#e1dad5] backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-200 hover:shadow-2xl transition-all duration-300"
             >
               <img
                 src={food.foodImage}

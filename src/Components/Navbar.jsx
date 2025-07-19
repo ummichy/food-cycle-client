@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router"; // 🔁 fix: use react-router-dom
+import { NavLink } from "react-router";
 import { IoFastFood } from "react-icons/io5";
 import { AuthContext } from "../Provider/AuthProvider";
 import userIcon from "../assets/icon.png";

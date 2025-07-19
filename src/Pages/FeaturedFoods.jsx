@@ -17,7 +17,7 @@ const FeaturedFoods = () => {
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-16 text-black">
-      <h2 className="text-5xl font-extrabold mb-8 text-center">Food Highlights</h2>
+      <h2 className="text-5xl font-extrabold mb-8 text-center text-white">Sharing Table</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {featuredFoods.map(food => (
