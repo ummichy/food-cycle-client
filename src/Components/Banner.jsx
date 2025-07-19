@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { motion } from "motion/react"
 
 const Banner = () => {
   return (
@@ -20,8 +21,8 @@ const Banner = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80 backdrop-blur-xs"></div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl text-center px-6 text-white pt-20">
-        <h1 className="font-extrabold text-5xl sm:text-6xl md:text-7xl mb-4 leading-tight drop-shadow-xl animate-fadeInUp">
+      <div className="relative z-10 max-w-5xl text-center px-4 sm:px-6 md:px-12 text-white md:pt-16 sm:pt-20">
+        <h1 className="font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4 leading-tight drop-shadow-xl animate-fadeInUp">
           Share Meals, <br />
           <span className="relative inline-block">
             Spread Happiness
@@ -29,34 +30,34 @@ const Banner = () => {
           </span>
         </h1>
 
-        <p className="text-lg sm:text-xl md:text-2xl font-light max-w-3xl mx-auto mb-12 drop-shadow-md animate-fadeInUp delay-150">
+        <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-light max-w-3xl mx-auto mb-10 sm:mb-12 drop-shadow-md animate-fadeInUp delay-150">
           Help reduce food waste and bring joy to someone’s plate. <br />
           Your contribution matters — every meal counts.
         </p>
 
         {/* Buttons */}
-        <div className="flex justify-center gap-6 flex-wrap">
-          <Link to="/available-foods">
-            <button className="px-12 py-4 bg-white hover:bg-gray-100 text-black font-semibold rounded-full shadow-lg transition">
+        <div className="flex justify-center gap-4 sm:gap-6 flex-wrap">
+          <Link to="/available-foods" className="w-full sm:w-auto">
+            <motion.button initial={{ scale: 0 }} animate={{ scale: 1 }} className="w-full sm:w-auto px-8 sm:px-12 py-3 sm:py-4 bg-white hover:bg-gray-100 text-black font-semibold rounded-full shadow-lg transition">
               Explore Available Foods
-            </button>
+            </motion.button>
           </Link>
-          <Link to="/add-food">
-            <button className="px-12 py-4 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-black transition">
+          <Link to="/add-food" className="w-full sm:w-auto">
+            <motion.button className="w-full sm:w-auto px-8 sm:px-12 py-3 sm:py-4 border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-black transition">
               Donate Food Now
-            </button>
+            </motion.button>
           </Link>
         </div>
       </div>
 
       {/* Floating icons */}
-      <div className="absolute top-10 left-10 opacity-30 animate-floatSlow">
-        <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+      <div className="absolute top-6 left-6 opacity-30 animate-floatSlow sm:top-10 sm:left-10">
+        <svg className="w-8 h-8 sm:w-12 sm:h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
           <circle cx="12" cy="12" r="10" />
         </svg>
       </div>
-      <div className="absolute bottom-12 right-12 opacity-20 animate-floatSlow delay-500">
-        <svg className="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
+      <div className="absolute bottom-6 right-6 opacity-20 animate-floatSlow delay-500 sm:bottom-12 sm:right-12">
+        <svg className="w-12 h-12 sm:w-16 sm:h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
           <rect width="20" height="20" x="2" y="2" rx="10" />
         </svg>
       </div>

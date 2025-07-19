@@ -45,7 +45,7 @@ const router = createBrowserRouter([
       },
       {
         path: "add-food",
-         loader : () => fetch('http://localhost:3000/services'),
+         loader : () => fetch('https://assignment-no-eleven-server.vercel.app/services'),
         element: <PrivateRoute>
    <AddFood></AddFood>
         </PrivateRoute>,

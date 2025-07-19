@@ -6,7 +6,7 @@ const FeaturedFoods = () => {
   const [featuredFoods, setFeaturedFoods] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/services')
+    axios.get('https://assignment-no-eleven-server.vercel.app/services')
       .then(res => {
         const availableFoods = res.data.filter(food => food.status === 'available');
         const sortedByQuantity = availableFoods.sort((a, b) => b.foodQuantity - a.foodQuantity);
@@ -27,13 +27,13 @@ const FeaturedFoods = () => {
               alt={food.foodName}
               className="h-48 w-full object-cover rounded-t-xl"
             />
-            <div className="p-5 text-black">
+            <div className="p-5 text-black bg-[#edeceb]shadow-2xl">
               <h3 className="text-xl font-semibold">{food.foodName}</h3>
               <p className="mt-1">Quantity: <span className="font-medium">{food.foodQuantity}</span></p>
               <p className="text-sm mt-1">Pickup: {food.pickupLocation}</p>
               <p className="text-sm mt-1 mb-3">Expires: {new Date(food.expireDate).toLocaleDateString()}</p>
               <Link to={`/food/${food._id}`}>
-                <button className="w-full py-2 rounded-lg bg-white border border-black text-black hover:bg-black hover:text-white font-semibold transition duration-300">
+                <button className="w-full py-2 rounded-lg bg-[#edeceb]   border border-black text-black hover:bg-black hover:text-white font-semibold transition duration-300">
                   View Details
                 </button>
               </Link>
@@ -44,7 +44,7 @@ const FeaturedFoods = () => {
 
       <div className="text-center mt-12">
         <Link to="/available-foods">
-          <button className="px-8 py-3 rounded-full bg-white border border-black text-black hover:bg-black hover:text-white font-semibold transition duration-300">
+          <button className="px-8 py-3 rounded-full bg-[#edeceb]  border border-black text-black hover:bg-black hover:text-white font-semibold transition duration-300">
             Show All
           </button>
         </Link>

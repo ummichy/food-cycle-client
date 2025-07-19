@@ -86,9 +86,9 @@ const Register = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-center py-10 px-4 max-w-screen-lg mx-auto gap-10">
+    <div className="flex flex-col lg:flex-row items-center justify-center pt-32 pb-10 px-4 max-w-screen-lg mx-auto gap-10">
       
-      <div className="w-full lg:w-1/2">
+      <div className="bg-[#edeceb]  w-full lg:w-1/2">
         <div className="card bg-base-100 w-full shadow-2xl p-6">
           <h2 className="font-semibold text-2xl text-center">Register your account</h2>
           <form onSubmit={handleRegister} className="card-body p-0 mt-4">

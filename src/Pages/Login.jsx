@@ -2,16 +2,31 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Provider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
+import axios from 'axios';
 
 const Login = () => {
-   useEffect(() => {
-      document.title = "Login";
-    }, []);
-  
+  useEffect(() => {
+    document.title = "Login";
+  }, []);
+
   const [error, setError] = useState('');
   const { signInWithGoogle, signIn, setUser } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
+
+  // Helper to request JWT token and set cookie on client
+  const setJwtToken = async (email) => {
+    try {
+      await axios.post(
+        'https://assignment-no-eleven-server.vercel.app/jwt',
+        { email },
+        { withCredentials: true }
+      );
+      console.log('✅ JWT cookie set');
+    } catch (err) {
+      console.error('❌ Failed to set JWT cookie:', err.message);
+    }
+  };
 
   const handleEmailPasswordLogin = (e) => {
     e.preventDefault();
@@ -19,13 +34,16 @@ const Login = () => {
     const password = e.target.password.value;
 
     signIn(email, password)
-      .then((result) => {
+      .then(async (result) => {
         setUser(result.user);
         setError('');
         toast.success('Logged in successfully!', {
           position: "top-right",
           autoClose: 3000,
         });
+
+        await setJwtToken(result.user.email);  // <-- added to fulfill requirement
+
         navigate(location.state?.from || '/');
       })
       .catch((err) => {
@@ -37,15 +55,17 @@ const Login = () => {
       });
   };
 
-
   const handleGoogleLogin = () => {
     signInWithGoogle()
-      .then((result) => {
+      .then(async (result) => {
         setUser(result.user);
         toast.success('Logged in with Google successfully!', {
           position: "top-right",
           autoClose: 3000,
         });
+
+        await setJwtToken(result.user.email);  // <-- added to fulfill requirement
+
         navigate(location.state?.from || '/');
       })
       .catch((error) => {
@@ -58,9 +78,7 @@ const Login = () => {
   };
 
   return (
-     
-    <div className="flex justify-center py-20 items-center px-2">
-     
+    <div className=" bg-[#edeceb] flex justify-center pt-32 pb-20 items-center px-2">
       <div className="card bg-base-100 w-full max-w-sm drop-shadow-lg py-5 px-4">
         <h2 className="font-semibold text-2xl text-center mb-4">Login your account</h2>
         <form onSubmit={handleEmailPasswordLogin} className="card-body space-y-2">
@@ -68,10 +86,9 @@ const Login = () => {
           <input name="email" type="email" className="input input-bordered" placeholder="Email" required />
           <label>Password</label>
           <input name="password" type="password" className="input input-bordered" placeholder="Password" required />
-          
+
           {error && <p className="text-red-500 text-xs">{error}</p>}
-          
-         
+
           <button type="submit" className="btn btn-neutral hover:bg-blue-700 transition-colors ">Login</button>
         </form>
         <button type="button" onClick={handleGoogleLogin} className="btn btn-outline hover:bg-gray-200 transition-colors ">
@@ -81,6 +98,7 @@ const Login = () => {
           Don't have an account? <Link to="/register" className="text-blue-500">Register</Link>
         </p>
       </div>
+      <ToastContainer />
     </div>
   );
 };

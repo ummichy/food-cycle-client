@@ -14,7 +14,7 @@ const Details = () => {
 
   // Load single food details
   useEffect(() => {
-    axios.get(`http://localhost:3000/services`)
+    axios.get(`https://assignment-no-eleven-server.vercel.app/services`)
       .then(res => {
         const found = res.data.find(item => item._id === id);
         setFood(found);
@@ -36,8 +36,8 @@ const Details = () => {
     };
 
     try {
-      await axios.post('http://localhost:3000/requests', requestData);
-      await axios.patch(`http://localhost:3000/services/${food._id}`, {
+      await axios.post('https://assignment-no-eleven-server.vercel.app/requests', requestData);
+      await axios.patch(`https://assignment-no-eleven-server.vercel.app/services/${food._id}`, {
         status: 'requested'
       });
       Swal.fire('Requested!', 'Food has been requested successfully.', 'success');
@@ -52,7 +52,7 @@ const Details = () => {
   if (!food) return <p className="text-center mt-10">Loading...</p>;
 
   return (
-    <div className="max-w-3xl mx-auto p-6 mt-10 bg-white rounded-xl shadow-lg">
+    <div className="max-w-xl mx-auto p-6  bg-white rounded-xl shadow-lg mb-16 mt-32">
       <img src={food.foodImage} alt={food.foodName} className="rounded-lg w-full h-64 object-cover" />
       <h2 className="text-3xl font-bold text-gray-900 mt-4">{food.foodName}</h2>
       <p className="text-gray-700 mt-2">Quantity: {food.foodQuantity}</p>
@@ -68,7 +68,7 @@ const Details = () => {
       </button>
 
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 px-4">
+        <div className="fixed inset-0  bg-opacity-50 flex items-center justify-center z-50 px-4">
           <div className="bg-white rounded-xl p-6 max-w-lg w-full">
             <h3 className="text-xl font-semibold mb-4 text-gray-800">Confirm Food Request</h3>
             <div className="space-y-2 text-sm">

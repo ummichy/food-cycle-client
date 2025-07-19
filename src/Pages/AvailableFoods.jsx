@@ -14,7 +14,7 @@ const AvailableFoods = () => {
 
   // Fetch all available foods
   useEffect(() => {
-    axios.get('http://localhost:3000/services')
+    axios.get('https://assignment-no-eleven-server.vercel.app/services')
       .then(res => {
         const availableFoods = res.data.filter(food => food.status === 'available');
         setFoods(availableFoods);
@@ -55,7 +55,7 @@ const AvailableFoods = () => {
      
 
       {/* Search & Sort */}
-      <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-10 bg-[#e1dad5] backdrop-blur-sm p-6 rounded-xl shadow-2xl ">
+      <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-10 bg-[#edeceb] backdrop-blur-sm p-6 rounded-xl shadow-2xl ">
         <input
           type="text"
           placeholder="Search by food name..."
@@ -81,7 +81,7 @@ const AvailableFoods = () => {
           {filteredFoods.map(food => (
             <div
               key={food._id}
-              className="bg-[#e1dad5] backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-200 hover:shadow-2xl transition-all duration-300"
+              className="bg-[#edeceb] backdrop-blur-xl rounded-3xl shadow-2xl border border-gray-200 hover:shadow-2xl transition-all duration-300"
             >
               <img
                 src={food.foodImage}

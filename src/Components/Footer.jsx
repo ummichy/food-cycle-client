@@ -47,9 +47,9 @@ const Footer = () => {
           <p className="text-gray-400 mb-2">Email: support@thefoodcycle.com</p>
           <p className="text-gray-400 mb-4">Phone: +880 123 456 789</p>
           <div className="flex space-x-4 text-gray-300">
-            <a href="#"><FaFacebookF className="hover:text-white transition" /></a>
-            <a href="#"><FaTwitter className="hover:text-white transition" /></a>
-            <a href="#"><FaInstagram className="hover:text-white transition" /></a>
+            <a href="https://www.facebook.com/share/1Aev5wQFd5/" target="_blank"><FaFacebookF className="hover:text-white transition" /></a>
+            <a href="https://x.com/tasniachy22?t=o4v9fknuoed1w3zHnF6Z0A&s=09" target='_blank'><FaTwitter className="hover:text-white transition" /></a>
+            <a href="https://www.instagram.com/tasnia_chyyy?igsh=cmszemYxNXpmd3pn" target='_blank'><FaInstagram className="hover:text-white transition" /></a>
           </div>
         </div>
       </div>

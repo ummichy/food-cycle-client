@@ -9,6 +9,14 @@ const ManageMyFoods = () => {
   const [editing, setEditing] = useState(null);
   const modalRef = useRef(null);
 
+  // Format date for datetime-local input
+  function formatDateForInput(dateString) {
+    if (!dateString) return '';
+    const d = new Date(dateString);
+    const pad = (n) => (n < 10 ? '0' + n : n);
+    return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+  }
+
   useEffect(() => {
     axios.get('http://localhost:3000/services')
       .then(res => {
@@ -17,26 +25,19 @@ const ManageMyFoods = () => {
       });
   }, [user?.email]);
 
-  // Trap focus inside modal for accessibility
   useEffect(() => {
     if (editing) {
-      const focusableElements = modalRef.current.querySelectorAll(
-        'input, textarea, button'
-      );
+      const focusableElements = modalRef.current.querySelectorAll('input, textarea, button');
       const firstElem = focusableElements[0];
       const lastElem = focusableElements[focusableElements.length - 1];
       const handleTab = (e) => {
         if (e.key === 'Tab') {
-          if (e.shiftKey) {
-            if (document.activeElement === firstElem) {
-              e.preventDefault();
-              lastElem.focus();
-            }
-          } else {
-            if (document.activeElement === lastElem) {
-              e.preventDefault();
-              firstElem.focus();
-            }
+          if (e.shiftKey && document.activeElement === firstElem) {
+            e.preventDefault();
+            lastElem.focus();
+          } else if (!e.shiftKey && document.activeElement === lastElem) {
+            e.preventDefault();
+            firstElem.focus();
           }
         }
       };
@@ -52,7 +53,7 @@ const ManageMyFoods = () => {
       text: 'Do you want to delete this food item?',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#EF4444',
+      confirmButtonColor: '#000',
       cancelButtonColor: '#6B7280',
       confirmButtonText: 'Yes, delete it!',
     });
@@ -94,71 +95,59 @@ const ManageMyFoods = () => {
   };
 
   return (
-    <section className="max-w-7xl mx-auto p-8 bg-white rounded-xl shadow-lg mt-16">
-      <h1 className="text-4xl font-extrabold text-gray-900 mb-10 text-center tracking-wide select-none">
-        Manage My Foods
-      </h1>
-
-      <div className="overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
-        <table className="min-w-full divide-y divide-gray-200 table-fixed">
-          <thead className="bg-gray-100 sticky top-0 z-10">
-            <tr>
-              <th scope="col" className="w-12 px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">#</th>
-              <th scope="col" className="w-48 px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Food</th>
-              <th scope="col" className="w-32 px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Quantity</th>
-              <th scope="col" className="w-40 px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Pickup Location</th>
-              <th scope="col" className="w-44 px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Expires On</th>
-              <th scope="col" className="w-36 px-6 py-3 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {myFoods.length === 0 && (
+    <section>
+      <div className="overflow-x-auto mt-32 max-w-7xl mx-auto px-6">
+        {myFoods.length === 0 ? (
+          <p className="text-center py-24 text-gray-500 italic text-lg select-none">
+            No food items found. Add some delicious food!
+          </p>
+        ) : (
+          <table className="w-full shadow-xl rounded-xl border border-gray-300 bg-[#edeceb]">
+            <thead className="bg-[#cec9c5] text-white sticky top-0 z-10 rounded-t-xl">
               <tr>
-                <td colSpan="6" className="text-center py-12 text-gray-500 italic select-none">
-                  No food items found. Add some delicious food!
-                </td>
+                <th className="w-12 text-black px-6 py-3 text-left text-xs font-semibold uppercase">#</th>
+                <th className="w-52 text-black px-6 py-3 text-left text-xs font-semibold uppercase">Food</th>
+                <th className="w-32 text-black px-6 py-3 text-left text-xs font-semibold uppercase">Quantity</th>
+                <th className="w-40 text-black px-6 py-3 text-left text-xs font-semibold uppercase">Pickup Location</th>
+                <th className="w-44 text-black px-6 py-3 text-left text-xs font-semibold uppercase">Expires On</th>
+                <th className="w-48 text-black px-6 py-3 text-center text-xs font-semibold uppercase">Actions</th>
               </tr>
-            )}
-            {myFoods.map((food, index) => (
-              <tr key={food._id} className="hover:bg-gray-50 transition">
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-700">{index + 1}</td>
-                <td className="px-6 py-4 whitespace-nowrap flex items-center gap-4">
-                  <img
-                    src={food.foodImage}
-                    alt={food.foodName}
-                    className="w-14 h-14 rounded-lg border border-gray-300 object-cover"
-                    loading="lazy"
-                  />
-                  <span className="text-gray-900 font-semibold">{food.foodName}</span>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{food.foodQuantity}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">{food.pickupLocation}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                  {new Date(food.expireDate).toLocaleString(undefined, {
-                    dateStyle: 'medium',
-                    timeStyle: 'short',
-                  })}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-center space-x-2">
-                  <button
-                    onClick={() => setEditing(food)}
-                    className="inline-block px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
-                    aria-label={`Edit ${food.foodName}`}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDelete(food._id)}
-                    className="inline-block px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition"
-                    aria-label={`Delete ${food.foodName}`}
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200 rounded-b-xl">
+              {myFoods.map((food, index) => (
+                <tr key={food._id} className="hover:bg-gray-50 transition">
+                  <td className="px-6 py-4 text-sm font-medium text-gray-700">{index + 1}</td>
+                  <td className="px-6 py-4 flex items-center gap-4">
+                    <img src={food.foodImage} alt={food.foodName} className="w-14 h-14 rounded-lg border object-cover" />
+                    <span className="text-gray-900 font-semibold">{food.foodName}</span>
+                  </td>
+                  <td className="px-6 py-4 text-sm text-gray-700">{food.foodQuantity}</td>
+                  <td className="px-6 py-4 text-sm text-gray-700">{food.pickupLocation}</td>
+                  <td className="px-6 py-4 text-sm text-gray-700">
+                    {new Date(food.expireDate).toLocaleString(undefined, {
+                      dateStyle: 'medium',
+                      timeStyle: 'short',
+                    })}
+                  </td>
+                  <td className="px-6 py-4 text-center space-x-2">
+                    <button
+                      onClick={() => setEditing(food)}
+                      className="inline-block px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-black transition"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => handleDelete(food._id)}
+                      className="inline-block px-4 py-2 bg-white text-black border border-black rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-black transition"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
 
       {/* Edit Modal */}
@@ -166,71 +155,40 @@ const ManageMyFoods = () => {
         <div
           role="dialog"
           aria-modal="true"
-          aria-labelledby="modal-title"
-          className="fixed inset-0 z-50 bg-black bg-opacity-60 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-opacity-60 flex items-center justify-center p-4"
         >
           <div
             ref={modalRef}
             className="bg-white rounded-xl shadow-xl max-w-lg w-full p-8 relative"
           >
-            <h2 id="modal-title" className="text-2xl font-bold mb-6 text-gray-800 select-none">
-              Update Food Item
-            </h2>
-            <form onSubmit={handleUpdate} className="space-y-6">
-              <input
-                type="text"
-                name="foodName"
-                defaultValue={editing.foodName}
-                required
-                className="w-full border border-gray-300 rounded-md px-5 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                placeholder="Food Name"
-                aria-label="Food Name"
-              />
-              <input
-                type="text"
-                name="foodImage"
-                defaultValue={editing.foodImage}
-                required
-                className="w-full border border-gray-300 rounded-md px-5 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                placeholder="Food Image URL"
-                aria-label="Food Image URL"
-              />
-              <input
-                type="text"
-                name="foodQuantity"
-                defaultValue={editing.foodQuantity}
-                required
-                className="w-full border border-gray-300 rounded-md px-5 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                placeholder="Quantity"
-                aria-label="Quantity"
-              />
-              <input
-                type="text"
-                name="pickupLocation"
-                defaultValue={editing.pickupLocation}
-                required
-                className="w-full border border-gray-300 rounded-md px-5 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                placeholder="Pickup Location"
-                aria-label="Pickup Location"
-              />
+            <h2 className="text-2xl font-bold mb-6 text-gray-800">Update Food Item</h2>
+            <form onSubmit={handleUpdate} className="space-y-5">
+              {['foodName', 'foodImage', 'foodQuantity', 'pickupLocation'].map((field) => (
+                <input
+                  key={field}
+                  type="text"
+                  name={field}
+                  defaultValue={editing[field]}
+                  required
+                  className="w-full border border-gray-300 rounded-md px-4 py-2 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
+                  placeholder={field.replace(/([A-Z])/g, ' $1')}
+                />
+              ))}
               <input
                 type="datetime-local"
                 name="expireDate"
-                defaultValue={editing.expireDate}
+                defaultValue={formatDateForInput(editing.expireDate)}
                 required
-                className="w-full border border-gray-300 rounded-md px-5 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                aria-label="Expiration Date and Time"
+                className="w-full border border-gray-300 rounded-md px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-black"
               />
               <textarea
                 name="additionalNotes"
                 defaultValue={editing.additionalNotes}
-                rows={4}
+                rows={3}
                 placeholder="Additional Notes (optional)"
-                className="w-full border border-gray-300 rounded-md px-5 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
-                aria-label="Additional Notes"
+                className="w-full border border-gray-300 rounded-md px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-black resize-none"
               />
-
-              <div className="flex justify-end gap-5 pt-6 border-t border-gray-200">
+              <div className="flex justify-end gap-4 pt-4 border-t border-gray-200">
                 <button
                   type="button"
                   onClick={() => setEditing(null)}
@@ -240,7 +198,7 @@ const ManageMyFoods = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-6 py-2 bg-indigo-600 text-white rounded-md font-semibold hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+                  className="px-6 py-2 bg-black text-white rounded-md font-semibold hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-black transition"
                 >
                   Update
                 </button>
