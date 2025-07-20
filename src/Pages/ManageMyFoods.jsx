@@ -18,7 +18,7 @@ const ManageMyFoods = () => {
   }
 
   useEffect(() => {
-    axios.get('http://localhost:3000/services')
+    axios.get('https://assignment-no-eleven-server.vercel.app/services')
       .then(res => {
         const userFoods = res.data.filter(food => food.donorEmail === user?.email);
         setMyFoods(userFoods);
@@ -60,7 +60,7 @@ const ManageMyFoods = () => {
 
     if (confirm.isConfirmed) {
       try {
-        await axios.delete(`http://localhost:3000/services/${id}`);
+        await axios.delete(`https://assignment-no-eleven-server.vercel.app/services/${id}`);
         Swal.fire('Deleted!', 'Your food item has been deleted.', 'success');
         setMyFoods(prev => prev.filter(item => item._id !== id));
       } catch {
@@ -82,11 +82,11 @@ const ManageMyFoods = () => {
     };
 
     try {
-      await axios.put(`http://localhost:3000/services/${editing._id}`, updatedFood);
+      await axios.put(`https://assignment-no-eleven-server.vercel.app/services/${editing._id}`, updatedFood);
       Swal.fire('Updated!', 'Food updated successfully.', 'success');
       setEditing(null);
 
-      const res = await axios.get('http://localhost:3000/services');
+      const res = await axios.get('https://assignment-no-eleven-server.vercel.app/services');
       const userFoods = res.data.filter(food => food.donorEmail === user?.email);
       setMyFoods(userFoods);
     } catch {

@@ -11,7 +11,7 @@ const MyFoodRequest = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:3000/requests?email=${user.email}`,
+        .get(`https://assignment-no-eleven-server.vercel.app/requests?email=${user.email}`,
           {
             headers: {
               authorization: `Bearer ${user.accessToken}`
@@ -42,7 +42,7 @@ const MyFoodRequest = () => {
 
     try {
       const res = await axios.delete(
-        `http://localhost:3000/requests/${id}`
+        `https://assignment-no-eleven-server.vercel.app/requests/${id}`
       );
 
       if (res.data.deletedCount > 0) {

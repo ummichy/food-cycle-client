@@ -14,7 +14,7 @@ const Details = () => {
 
   // Load single food details
   useEffect(() => {
-    axios.get(`http://localhost:3000/services`)
+    axios.get(`https://assignment-no-eleven-server.vercel.app/services`)
       .then(res => {
         const found = res.data.find(item => item._id === id);
         setFood(found);
@@ -36,8 +36,8 @@ const Details = () => {
     };
 
     try {
-      await axios.post('http://localhost:3000/requests', requestData);
-      await axios.patch(`http://localhost:3000/services/${food._id}`, {
+      await axios.post('https://assignment-no-eleven-server.vercel.app/requests', requestData);
+      await axios.patch(`https://assignment-no-eleven-server.vercel.app/services/${food._id}`, {
         status: 'requested'
       });
       Swal.fire('Requested!', 'Food has been requested successfully.', 'success');

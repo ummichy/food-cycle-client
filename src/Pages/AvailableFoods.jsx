@@ -14,7 +14,7 @@ const AvailableFoods = () => {
 
   
   useEffect(() => {
-    axios.get('http://localhost:3000/services')
+    axios.get('https://assignment-no-eleven-server.vercel.app/services')
       .then(res => {
         const availableFoods = res.data.filter(food => food.status === 'available');
         setFoods(availableFoods);

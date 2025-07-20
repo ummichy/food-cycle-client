@@ -18,7 +18,7 @@ const Login = () => {
   const setJwtToken = async (email) => {
     try {
       await axios.post(
-        'http://localhost:3000/jwt',
+        'https://assignment-no-eleven-server.vercel.app/jwt',
         { email },
         { withCredentials: true }
       );
