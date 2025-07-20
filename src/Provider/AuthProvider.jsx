@@ -9,7 +9,6 @@ import {
   signOut,
 } from 'firebase/auth';
 import { auth } from '../firebase/firebase.init';
-import axios from 'axios';
 
 
 export const AuthContext = createContext(null);
@@ -23,16 +22,9 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
-      if(currentUser?.email){
-        const userData = {email:currentUser.email};
-        axios.post('https://assignment-no-eleven-server.vercel.app/jwt',userData,{
-          withCredentials : true
-        })
-        .then(res=>{
-          console.log('token after jwt',res.data)
-        })
-        .catch(error => console.log(error))
-      }
+      console.log('user in the auth change',currentUser)
+
+      
     });
 
     return () => unsubscribe();

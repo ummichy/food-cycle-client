@@ -18,13 +18,13 @@ const Login = () => {
   const setJwtToken = async (email) => {
     try {
       await axios.post(
-        'https://assignment-no-eleven-server.vercel.app/jwt',
+        'http://localhost:3000/jwt',
         { email },
         { withCredentials: true }
       );
-      console.log('✅ JWT cookie set');
+      console.log('JWT cookie set');
     } catch (err) {
-      console.error('❌ Failed to set JWT cookie:', err.message);
+      console.error('Failed to set JWT cookie:', err.message);
     }
   };
 
@@ -42,7 +42,7 @@ const Login = () => {
           autoClose: 3000,
         });
 
-        await setJwtToken(result.user.email);  // <-- added to fulfill requirement
+        await setJwtToken(result.user.email); 
 
         navigate(location.state?.from || '/');
       })
@@ -64,7 +64,7 @@ const Login = () => {
           autoClose: 3000,
         });
 
-        await setJwtToken(result.user.email);  // <-- added to fulfill requirement
+        await setJwtToken(result.user.email);  
 
         navigate(location.state?.from || '/');
       })

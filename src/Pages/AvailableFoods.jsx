@@ -12,9 +12,9 @@ const AvailableFoods = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // Fetch all available foods
+  
   useEffect(() => {
-    axios.get('https://assignment-no-eleven-server.vercel.app/services')
+    axios.get('http://localhost:3000/services')
       .then(res => {
         const availableFoods = res.data.filter(food => food.status === 'available');
         setFoods(availableFoods);
@@ -22,7 +22,7 @@ const AvailableFoods = () => {
       });
   }, []);
 
-  // Search & Sort functionality
+  
   useEffect(() => {
     let updated = [...foods];
 
@@ -41,7 +41,7 @@ const AvailableFoods = () => {
     setFilteredFoods(updated);
   }, [searchTerm, sortOrder, foods]);
 
-  // Handle View Details
+ 
   const handleViewDetails = (id) => {
     if (!user) {
       navigate('/login');
@@ -54,7 +54,7 @@ const AvailableFoods = () => {
     <section className="max-w-7xl mx-auto px-4 py-24">
      
 
-      {/* Search & Sort */}
+      
       <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-10 bg-[#edeceb] backdrop-blur-sm p-6 rounded-xl shadow-2xl ">
         <input
           type="text"
@@ -75,7 +75,6 @@ const AvailableFoods = () => {
         </div>
       </div>
 
-      {/* Food Cards */}
       {filteredFoods.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
           {filteredFoods.map(food => (

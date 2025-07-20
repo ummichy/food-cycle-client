@@ -11,10 +11,16 @@ const MyFoodRequest = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`https://assignment-no-eleven-server.vercel.app/requests?email=${user.email}`)
+        .get(`http://localhost:3000/requests?email=${user.email}`,
+          {
+            headers: {
+              authorization: `Bearer ${user.accessToken}`
+            }
+          }
+        )
         .then(res => setRequests(res.data))
         .catch(err => {
-          console.error('❌ Failed to fetch requests:', err.response?.data || err.message);
+          console.error(' Failed to fetch requests:', err.response?.data || err.message);
           Swal.fire('Error', 'Could not fetch your requests.', 'error');
         });
     }
@@ -36,7 +42,7 @@ const MyFoodRequest = () => {
 
     try {
       const res = await axios.delete(
-        `https://assignment-no-eleven-server.vercel.app/requests/${id}`
+        `http://localhost:3000/requests/${id}`
       );
 
       if (res.data.deletedCount > 0) {
@@ -54,7 +60,7 @@ const MyFoodRequest = () => {
       );
     }
   };
-
+  console.log('token in thecontext', user.accessToken)
   return (
     <div className="max-w-7xl mx-auto px-4 py-10 mt-24">
       {requests.length === 0 ? (

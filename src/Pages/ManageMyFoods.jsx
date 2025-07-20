@@ -9,7 +9,7 @@ const ManageMyFoods = () => {
   const [editing, setEditing] = useState(null);
   const modalRef = useRef(null);
 
-  // Format date for datetime-local input
+ 
   function formatDateForInput(dateString) {
     if (!dateString) return '';
     const d = new Date(dateString);
@@ -18,7 +18,7 @@ const ManageMyFoods = () => {
   }
 
   useEffect(() => {
-    axios.get('https://assignment-no-eleven-server.vercel.app/services')
+    axios.get('http://localhost:3000/services')
       .then(res => {
         const userFoods = res.data.filter(food => food.donorEmail === user?.email);
         setMyFoods(userFoods);
@@ -60,7 +60,7 @@ const ManageMyFoods = () => {
 
     if (confirm.isConfirmed) {
       try {
-        await axios.delete(`https://assignment-no-eleven-server.vercel.app/services/${id}`);
+        await axios.delete(`http://localhost:3000/services/${id}`);
         Swal.fire('Deleted!', 'Your food item has been deleted.', 'success');
         setMyFoods(prev => prev.filter(item => item._id !== id));
       } catch {
@@ -82,11 +82,11 @@ const ManageMyFoods = () => {
     };
 
     try {
-      await axios.put(`https://assignment-no-eleven-server.vercel.app/services/${editing._id}`, updatedFood);
+      await axios.put(`http://localhost:3000/services/${editing._id}`, updatedFood);
       Swal.fire('Updated!', 'Food updated successfully.', 'success');
       setEditing(null);
 
-      const res = await axios.get('https://assignment-no-eleven-server.vercel.app/services');
+      const res = await axios.get('http://localhost:3000/services');
       const userFoods = res.data.filter(food => food.donorEmail === user?.email);
       setMyFoods(userFoods);
     } catch {
@@ -150,7 +150,7 @@ const ManageMyFoods = () => {
         )}
       </div>
 
-      {/* Edit Modal */}
+     
       {editing && (
         <div
           role="dialog"

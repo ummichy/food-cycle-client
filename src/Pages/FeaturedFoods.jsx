@@ -6,7 +6,7 @@
 //   const [featuredFoods, setFeaturedFoods] = useState([]);
 
 //   useEffect(() => {
-//     axios.get('https://assignment-no-eleven-server.vercel.app/services')
+//     axios.get('http://localhost:3000/services')
 //       .then(res => {
 //         const availableFoods = res.data.filter(food => food.status === 'available');
 //         const sortedByQuantity = availableFoods.sort((a, b) => b.foodQuantity - a.foodQuantity);
@@ -93,7 +93,7 @@
 // import axios from 'axios';
 
 // const fetchFoods = async () => {
-//   const res = await axios.get('https://assignment-no-eleven-server.vercel.app/services');
+//   const res = await axios.get('http://localhost:3000/services');
 //   return res.data;
 // };
 
@@ -181,7 +181,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
 const fetchFoods = async () => {
-  const res = await axios.get('https://assignment-no-eleven-server.vercel.app/services');
+  const res = await axios.get('http://localhost:3000/services');
   return res.data;
 };
 

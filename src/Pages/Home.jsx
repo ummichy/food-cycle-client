@@ -6,7 +6,7 @@ import OurApproach from './OurApproach';
 import Supporters from './Supporters';
 
 const Home = () => {
-    //  const services = fetch('https://assignment-no-eleven-server.vercel.app/services').then(res=>res.json())
+    //  const services = fetch('http://localhost:3000/services').then(res=>res.json())
     return (
         <>
        <Banner></Banner>
