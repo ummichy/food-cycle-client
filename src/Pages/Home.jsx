@@ -5,6 +5,7 @@ import FeaturedFoods from './FeaturedFoods';
 import OurApproach from './OurApproach';
 import Supporters from './Supporters';
 import NewsletterSubscription from './NewsletterSubscription';
+import Reviews from './Reviews';
 
 const Home = () => {
    
@@ -14,6 +15,7 @@ const Home = () => {
        <FeaturedFoods></FeaturedFoods>
       <OurApproach></OurApproach>
       <Supporters></Supporters>
+      <Reviews></Reviews>
       <NewsletterSubscription></NewsletterSubscription>
         </>
     );
