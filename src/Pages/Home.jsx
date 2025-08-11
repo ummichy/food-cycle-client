@@ -4,15 +4,17 @@ import FeaturedFoods from './FeaturedFoods';
 
 import OurApproach from './OurApproach';
 import Supporters from './Supporters';
+import NewsletterSubscription from './NewsletterSubscription';
 
 const Home = () => {
-    //  const services = fetch('https://assignment-no-eleven-server.vercel.app/services').then(res=>res.json())
+   
     return (
         <>
        <Banner></Banner>
        <FeaturedFoods></FeaturedFoods>
       <OurApproach></OurApproach>
       <Supporters></Supporters>
+      <NewsletterSubscription></NewsletterSubscription>
         </>
     );
 };
