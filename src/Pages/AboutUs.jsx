@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router";
-import Login from "./Login";
 
 const AboutUs = () => {
   useEffect(() => {
@@ -11,7 +10,7 @@ const AboutUs = () => {
 
   return (
     <section className="relative overflow-hidden">
-      {/* Wave SVG Top */}
+    
       <svg
         className="absolute top-0 left-0 w-full -translate-y-24 md:-translate-y-32"
         viewBox="0 0 1440 320"
@@ -27,7 +26,7 @@ const AboutUs = () => {
       </svg>
 
       <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-20 md:py-32 grid md:grid-cols-12 gap-12 items-center">
-        {/* Left Content */}
+        
         <div className="md:col-span-7 space-y-8" data-aos="fade-right">
           <h2 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-gray-600 to-gray-900 animate-gradient-x">
             About <span className="text-gray-900">TheFoodCycle</span>
@@ -73,14 +72,15 @@ const AboutUs = () => {
             ))}
           </ul>
 
-<button className="mt-8 px-8 py-3 rounded-full bg-black text-white font-semibold shadow-lg hover:bg-gray-700 transition duration-300">
+          <Link
+            to="/login"
+            className="inline-block mt-8 px-8 py-3 rounded-full bg-black text-white font-semibold shadow-lg hover:bg-gray-700 transition duration-300 text-center"
+          >
             Join Our Mission
-          </button>
-
-          
+          </Link>
         </div>
 
-        {/* Right Image with Floating Card */}
+       
         <div className="md:col-span-5 relative" data-aos="fade-left">
           <img
             src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1350&q=80"
@@ -102,7 +102,7 @@ const AboutUs = () => {
         </div>
       </div>
 
-      {/* Wave SVG Bottom */}
+    
       <svg
         className="absolute bottom-0 left-0 w-full translate-y-24 md:translate-y-32"
         viewBox="0 0 1440 320"
@@ -117,7 +117,7 @@ const AboutUs = () => {
         />
       </svg>
 
-      {/* Gradient Animation Style */}
+     
       <style>{`
         .animate-gradient-x {
           background-size: 200% 200%;
