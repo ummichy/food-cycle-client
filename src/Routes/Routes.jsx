@@ -16,6 +16,7 @@ import AboutUs from '../Pages/AboutUs';
 import FAQSection from '../Pages/FAQSection';
 import SupportSection from '../Pages/SupportSection';
 import TermsAndConditions from '../Pages/TermsAndConditions';
+import PrivacyPolicy from '../Pages/PrivacyPolicy';
 
 
 const router = createBrowserRouter([
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
       {
         path: "terms",
         element: <TermsAndConditions/>,
+      },
+      {
+        path: "privacy",
+        element: <PrivacyPolicy/>,
       },
       
     ],

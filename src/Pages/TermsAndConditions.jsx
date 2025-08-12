@@ -35,7 +35,7 @@ const TermsAndConditions = () => {
           href="mailto:support@thefoodcycle.com"
           className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300"
         >
-          thefoodcycle@gmail.com
+          foodcycle@gmail.com
         </a>
         .
       </p>
