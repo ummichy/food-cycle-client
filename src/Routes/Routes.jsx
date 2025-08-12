@@ -14,6 +14,8 @@ import ManageMyFoods from '../Pages/ManageMyFoods';
 import MyFoodRequest from '../Pages/MyFoodRequest';
 import AboutUs from '../Pages/AboutUs';
 import FAQSection from '../Pages/FAQSection';
+import SupportSection from '../Pages/SupportSection';
+import TermsAndConditions from '../Pages/TermsAndConditions';
 
 
 const router = createBrowserRouter([
@@ -71,9 +73,16 @@ const router = createBrowserRouter([
       },
       {
         path: "faq",
-        element: <FAQSection/>
- 
-       ,
+        element: <FAQSection/>,
+      },
+      {
+        path: "support",
+        element: <SupportSection/>,
+      },
+      
+      {
+        path: "terms",
+        element: <TermsAndConditions/>,
       },
       
     ],

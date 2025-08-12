@@ -72,12 +72,7 @@ const AboutUs = () => {
             ))}
           </ul>
 
-          {/* <Link
-            to="/login"
-            className="inline-block mt-8 px-8 py-3 rounded-full bg-black text-white font-semibold shadow-lg hover:bg-gray-700 transition duration-300 text-center"
-          >
-            Join Our Mission
-          </Link> */}
+          
         </div>
 
        

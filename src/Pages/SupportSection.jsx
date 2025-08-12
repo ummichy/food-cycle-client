@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { HiPhone, HiMail, HiLocationMarker } from "react-icons/hi";
 
 const SupportSection = () => {
   const [formData, setFormData] = useState({
@@ -6,7 +7,6 @@ const SupportSection = () => {
     email: "",
     message: "",
   });
-
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
@@ -15,68 +15,78 @@ const SupportSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here, you’d normally send data to backend or email service
     setSubmitted(true);
     setFormData({ name: "", email: "", message: "" });
   };
 
   return (
-    <section className="py-16 px-4 bg-gray-50 dark:bg-gray-900 transition-colors duration-500">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl font-extrabold text-gray-800 dark:text-gray-100 text-center mb-8">
-          Need Help? Contact Support
+    <section className="py-20 px-6 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-500">
+      <div className="max-w-5xl mx-auto">
+        <h2 className="text-4xl font-extrabold text-center text-gray-900 dark:text-gray-100 mb-12">
+          We're Here to Help
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Contact Info */}
-          <div className="space-y-6 text-gray-700 dark:text-gray-300">
-            <p>
-              Our support team is here to assist you. Reach out anytime via
-              phone, email, or use the form.
+          <div className="space-y-10 text-gray-700 dark:text-gray-300">
+            <p className="text-lg leading-relaxed">
+              Our dedicated support team is ready to assist you with any inquiries or issues. Reach out anytime using the details below or the contact form.
             </p>
-            <div>
-              <h3 className="font-semibold text-lg mb-2">Contact Details</h3>
-              <p>
-                <strong>Phone:</strong> +1 (555) 123-4567
-              </p>
-              <p>
-                <strong>Email:</strong>{" "}
-                <a
-                  href="mailto:support@thefoodcycle.com"
-                  className="text-blue-600 dark:text-blue-400 underline"
-                >
-                  support@thefoodcycle.com
-                </a>
-              </p>
-              <p>
-                <strong>Address:</strong> 123 Food St, Cityville, Country
-              </p>
+
+            <div className="space-y-6">
+              <div className="flex items-center gap-4">
+                <HiPhone className="w-8 h-8 text-black dark:text-green-400" />
+                <div>
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                    Phone
+                  </h4>
+                  <p>+1 (555) 123-4567</p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <HiMail className="w-8 h-8 text-black dark:text-green-400" />
+                <div>
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                    Email
+                  </h4>
+                  <a
+                    href="mailto:support@thefoodcycle.com"
+                    className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300 transition"
+                  >
+                    foodcycle@gmail.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                <HiLocationMarker className="w-8 h-8 text-black dark:text-green-400" />
+                <div>
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                    Address
+                  </h4>
+                  <p>123 Food St, Cityville, Country</p>
+                </div>
+              </div>
             </div>
 
             <div>
-              <h3 className="font-semibold text-lg mb-2">Quick Links</h3>
-              <ul className="space-y-1">
+              <h4 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">
+                Quick Links
+              </h4>
+              <ul className="space-y-2 text-blue-600 dark:text-blue-400">
                 <li>
-                  <a
-                    href="/faq"
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
-                  >
+                  <a href="/faq" className="hover:underline">
                     FAQ
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/terms"
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
-                  >
+                  <a href="/terms" className="hover:underline">
                     Terms of Service
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/privacy"
-                    className="text-blue-600 dark:text-blue-400 hover:underline"
-                  >
+                  <a href="/privacy" className="hover:underline">
                     Privacy Policy
                   </a>
                 </li>
@@ -87,10 +97,10 @@ const SupportSection = () => {
           {/* Support Form */}
           <form
             onSubmit={handleSubmit}
-            className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 space-y-6"
+            className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 flex flex-col space-y-6"
           >
             {submitted && (
-              <div className="text-green-600 dark:text-green-400 font-semibold mb-4">
+              <div className="text-green-700 dark:text-green-400 font-semibold bg-green-100 dark:bg-green-900 p-3 rounded-md">
                 Thank you! Your message has been sent.
               </div>
             )}
@@ -98,7 +108,7 @@ const SupportSection = () => {
             <div>
               <label
                 htmlFor="name"
-                className="block mb-1 text-gray-700 dark:text-gray-300 font-medium"
+                className="block mb-2 font-semibold text-gray-900 dark:text-gray-100"
               >
                 Name <span className="text-red-500">*</span>
               </label>
@@ -109,15 +119,15 @@ const SupportSection = () => {
                 required
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full rounded-md border border-gray-300 dark:border-gray-700 px-4 py-2 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition"
                 placeholder="Your full name"
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-black transition"
               />
             </div>
 
             <div>
               <label
                 htmlFor="email"
-                className="block mb-1 text-gray-700 dark:text-gray-300 font-medium"
+                className="block mb-2 font-semibold text-gray-900 dark:text-gray-100"
               >
                 Email <span className="text-red-500">*</span>
               </label>
@@ -128,33 +138,33 @@ const SupportSection = () => {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full rounded-md border border-gray-300 dark:border-gray-700 px-4 py-2 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white transition"
                 placeholder="you@example.com"
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-black transition"
               />
             </div>
 
             <div>
               <label
                 htmlFor="message"
-                className="block mb-1 text-gray-700 dark:text-gray-300 font-medium"
+                className="block mb-2 font-semibold text-gray-900 dark:text-gray-100"
               >
                 Message <span className="text-red-500">*</span>
               </label>
               <textarea
                 id="message"
                 name="message"
-                rows={4}
+                rows={5}
                 required
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full rounded-md border border-gray-300 dark:border-gray-700 px-4 py-2 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white resize-none transition"
                 placeholder="Write your message here..."
+                className="w-full rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-3 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-black resize-none transition"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full bg-black text-white rounded-md py-3 font-semibold hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-black transition"
+              className="w-full bg-black hover:bg-gray-700 text-white font-semibold py-3 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-black transition"
             >
               Send Message
             </button>
