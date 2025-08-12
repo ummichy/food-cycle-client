@@ -34,7 +34,7 @@ const Footer = () => {
         <div>
           <h4 className="text-lg font-semibold mb-4">Help</h4>
           <ul className="space-y-2 text-gray-400">
-            <li><a href="#" className="hover:text-white transition">FAQ</a></li>
+            <li><Link to="/faq" className="hover:text-white transition">FAQ</Link></li>
             <li><a href="#" className="hover:text-white transition">Support</a></li>
             <li><a href="#" className="hover:text-white transition">Terms & Conditions</a></li>
             <li><a href="#" className="hover:text-white transition">Privacy Policy</a></li>
@@ -44,7 +44,7 @@ const Footer = () => {
         {/* Contact & Social */}
         <div>
           <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
-          <p className="text-gray-400 mb-2">Email: support@thefoodcycle.com</p>
+          <p className="text-gray-400 mb-2">Email: thefoodcycle.com</p>
           <p className="text-gray-400 mb-4">Phone: +880 123 456 789</p>
           <div className="flex space-x-4 text-gray-300">
             <a href="https://www.facebook.com/share/1Aev5wQFd5/" target="_blank"><FaFacebookF className="hover:text-white transition" /></a>
