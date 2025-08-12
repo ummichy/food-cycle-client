@@ -15,7 +15,7 @@ const NewsletterSubscription = () => {
   return (
     <section
       aria-labelledby="newsletter-heading"
-      className="newsletter-section py-16 px-6 sm:px-12 text-black  bg-gradient-to-t from-[#c2bcb7] via-[#ddd9d6] to-[#f4f2f0]"
+      className="newsletter-section py-16 px-6 sm:px-12 text-black "
     >
       <div className="max-w-3xl mx-auto text-center">
         <h2

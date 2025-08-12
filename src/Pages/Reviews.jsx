@@ -56,7 +56,7 @@ const Reviews = () => {
     >
       <h2
         id="reviews-heading"
-        className="text-3xl font-semibold text-center mb-12"
+        className="text-4xl font-extrabold drop-shadow-lg text-center mb-12"
       >
         Customer Reviews
       </h2>
