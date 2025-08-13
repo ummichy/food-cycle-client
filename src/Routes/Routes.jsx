@@ -17,6 +17,7 @@ import FAQSection from '../Pages/FAQSection';
 import SupportSection from '../Pages/SupportSection';
 import TermsAndConditions from '../Pages/TermsAndConditions';
 import PrivacyPolicy from '../Pages/PrivacyPolicy';
+import NotFound from '../Pages/NotFound';
 
 
 const router = createBrowserRouter([
@@ -89,10 +90,14 @@ const router = createBrowserRouter([
         path: "privacy",
         element: <PrivacyPolicy/>,
       },
+ 
       
     ],
   },
-  
+       {
+    path: "/*",
+    Component: NotFound,
+ },
   
 ]);
 export default router;

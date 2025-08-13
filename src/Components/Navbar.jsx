@@ -190,9 +190,19 @@ const Navbar = () => {
           <li>
             <NavLink to="/">Home</NavLink>
           </li>
+
+          
           <li>
             <NavLink to="/available-foods">Available Foods</NavLink>
           </li>
+
+<li>
+            <NavLink
+              to="/about-us">
+              About Us
+            </NavLink>
+          </li>
+
           {user && (
             <>
               <li>
