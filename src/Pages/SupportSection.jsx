@@ -20,15 +20,15 @@ const SupportSection = () => {
   };
 
   return (
-    <section className="py-20 px-6 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-500">
+    <section className="py-20 px-6 bg-gradient-to-b from-[#c2bcb7] via-[#ddd9d6] to-[#f4f2f0] transition-colors duration-500">
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-4xl font-extrabold text-center text-gray-900 dark:text-gray-100 mb-12">
+        <h2 className="text-4xl font-extrabold text-center text-black mb-12">
           We're Here to Help
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Contact Info */}
-          <div className="space-y-10 text-gray-700 dark:text-gray-300">
+          <div className="space-y-10 text-black">
             <p className="text-lg leading-relaxed">
               Our dedicated support team is ready to assist you with any inquiries or issues. Reach out anytime using the details below or the contact form.
             </p>
@@ -37,7 +37,7 @@ const SupportSection = () => {
               <div className="flex items-center gap-4">
                 <HiPhone className="w-8 h-8 text-black dark:text-green-400" />
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  <h4 className="text-lg font-semibold text-black">
                     Phone
                   </h4>
                   <p>+1 (555) 123-4567</p>
@@ -47,7 +47,7 @@ const SupportSection = () => {
               <div className="flex items-center gap-4">
                 <HiMail className="w-8 h-8 text-black dark:text-green-400" />
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  <h4 className="text-lg font-semibold text-black">
                     Email
                   </h4>
                   <a
@@ -62,7 +62,7 @@ const SupportSection = () => {
               <div className="flex items-center gap-4">
                 <HiLocationMarker className="w-8 h-8 text-black dark:text-green-400" />
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  <h4 className="text-lg font-semibold text-black">
                     Address
                   </h4>
                   <p>123 Food St, Cityville, Country</p>
@@ -71,7 +71,7 @@ const SupportSection = () => {
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">
+              <h4 className="text-lg font-semibold mb-4 text-black">
                 Quick Links
               </h4>
               <ul className="space-y-2 text-blue-600 dark:text-blue-400">
