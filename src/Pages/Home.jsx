@@ -6,6 +6,8 @@ import OurApproach from './OurApproach';
 import Supporters from './Supporters';
 import NewsletterSubscription from './NewsletterSubscription';
 import Reviews from './Reviews';
+import DonationSuggestions from './DonationSuggestions';
+import EngagementHub from './EngagementHub';
 
 const Home = () => {
    
@@ -15,6 +17,8 @@ const Home = () => {
        <FeaturedFoods></FeaturedFoods>
       <OurApproach></OurApproach>
       <Supporters></Supporters>
+             <DonationSuggestions></DonationSuggestions>
+             <EngagementHub></EngagementHub>
       <Reviews></Reviews>
       <NewsletterSubscription></NewsletterSubscription>
         </>

@@ -18,6 +18,7 @@ import SupportSection from '../Pages/SupportSection';
 import TermsAndConditions from '../Pages/TermsAndConditions';
 import PrivacyPolicy from '../Pages/PrivacyPolicy';
 import NotFound from '../Pages/NotFound';
+import Leaderboard from '../Pages/Leaderboard';
 
 
 const router = createBrowserRouter([
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
         path: "available-foods",
         element: <AvailableFoods />,
       },
+      {
+  path: "/leaderboard",
+  element:<Leaderboard></Leaderboard>
+},
       {
         path: "about-us",
         element: <AboutUs />,

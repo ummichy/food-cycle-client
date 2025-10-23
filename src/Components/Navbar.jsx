@@ -82,6 +82,17 @@ const Navbar = () => {
               About Us
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/leaderboard"
+              className={({ isActive }) =>
+                isActive
+                  ? "border-b-2 border-white text-white font-semibold px-3 pb-1"
+                  : "text-white hover:border-b-2 hover:border-white px-3 pb-1"
+              }
+            >
+LeaderBoard            </NavLink>
+          </li>
           {user && (
             <>
               <li>
